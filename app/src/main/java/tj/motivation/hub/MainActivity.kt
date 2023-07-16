@@ -10,7 +10,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import tj.motivation.hub.home.presantation.view_model.HomeViewModel
 import tj.motivation.hub.ui.theme.MotivationHubTheme
 
 @AndroidEntryPoint
@@ -24,6 +26,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
+                    val viewModel: HomeViewModel = hiltViewModel()
                     Greeting("Android")
                 }
             }

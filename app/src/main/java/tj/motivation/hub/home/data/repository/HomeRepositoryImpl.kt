@@ -17,7 +17,7 @@ class HomeRepositoryImpl(
     private val quotesApi: QuotesApi,
     private val photoApi: PhotoApi,
 ) : HomeRepository {
-    override fun getQuotes(): Flow<Resource<List<Quotes>>> = flow {
+    override fun getRandomQuoteAndPhoto(): Flow<Resource<List<Quotes>>> = flow {
         emit(Resource.Loading())
 
         val cachedQuotes: List<Quotes> = dao.getAllQuotes().map { it.toQuotes() }
@@ -27,7 +27,7 @@ class HomeRepositoryImpl(
             //Getting just one quotes for example purposes
             val randomPhoto = photoApi.getRandomPhoto()
             val randomQuote = quotesApi.getRandomQuote()[0].toQuotes(randomPhoto.toPhoto())
-            dao.deleteQuotesByBackgroundId(listOf(randomQuote.backgroundId))
+//            dao.deleteQuotesByBackgroundId(randomQuote.backgroundId)
             dao.insertQuotes(listOf(randomQuote.toQuotesEntity()))
 
         }catch (e : IOException){
@@ -37,7 +37,6 @@ class HomeRepositoryImpl(
         }catch (_ : Exception){
 
         }
-
         val newQuotesForCaching = dao.getAllQuotes().map { it.toQuotes() }
         emit(Resource.Success(newQuotesForCaching))
     }

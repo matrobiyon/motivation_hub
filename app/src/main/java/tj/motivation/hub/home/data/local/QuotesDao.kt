@@ -12,8 +12,11 @@ interface QuotesDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertQuotes(quotesEntity: List<QuotesEntity>)
 
-    @Query("DELETE FROM quotes WHERE backgroundsId IN(:quotesId)")
-    suspend fun deleteQuotesByBackgroundId(quotesId: List<String>)
+//    @Query("DELETE FROM quotes WHERE backgroundsId =:quotesId")
+//    suspend fun deleteQuotesByBackgroundId(quotesId: String)
+
+//    @Query("DELETE FROM quotes WHERE backgroundsId =:quotesId")
+//    suspend fun deleteQuotesByBackgroundId(quotesId: String)
 
     @Query("SELECT * FROM quotes")
     fun getAllQuotes(): List<QuotesEntity>
