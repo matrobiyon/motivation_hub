@@ -1,10 +1,12 @@
 package tj.motivation.hub.home.presantation.view_model
 
+import android.util.Log
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
@@ -30,10 +32,11 @@ class HomeViewModel @Inject constructor(
 
     private var job: Job? = null
 
-    private fun getRandomQuoteAndPhoto() {
+    fun getRandomQuoteAndPhoto() {
         job?.cancel()
-        job = viewModelScope.launch {
+        job = viewModelScope.launch(Dispatchers.IO) {
             getQuoteAndPhotoUseCase().onEach { result ->
+                Log.d("TAG", "getRandomQuoteAndPhoto: ${result.message} message ${result.data} data")
                 when (result) {
                     is Resource.Success -> {
                         _randomPhotoAndQuoteState.value = randomPhotoAndQuoteState.value.copy(
