@@ -13,6 +13,6 @@ data class QuotesEntity(
     @PrimaryKey(autoGenerate = true) val id: Int = 0
 ) {
     fun toQuotes(): Quotes {
-        return Quotes(quote, author, background, backgroundsId)
+        return Quotes(author, quote, background, backgroundsId)
     }
 }

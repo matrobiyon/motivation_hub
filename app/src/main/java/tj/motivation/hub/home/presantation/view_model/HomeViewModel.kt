@@ -32,10 +32,10 @@ class HomeViewModel @Inject constructor(
 
     private var job: Job? = null
 
-    fun getRandomQuoteAndPhoto() {
+    fun getRandomQuoteAndPhoto(width : Float,height : Float) {
         job?.cancel()
         job = viewModelScope.launch(Dispatchers.IO) {
-            getQuoteAndPhotoUseCase().onEach { result ->
+            getQuoteAndPhotoUseCase(width,height).onEach { result ->
                 Log.d("TAG", "getRandomQuoteAndPhoto: ${result.message} message ${result.data} data")
                 when (result) {
                     is Resource.Success -> {
