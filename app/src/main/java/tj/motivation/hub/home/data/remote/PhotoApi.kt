@@ -15,6 +15,6 @@ interface PhotoApi {
 
     @GET("/photos/random")
     @Headers(value = ["Authorization: ${BuildConfig.UNSPLASH_API_KEY}"])
-    suspend fun getRandomPhoto(@Query("w") width : Float,@Query("h") height : Float) : Response<PhotoDto>
+    suspend fun getRandomPhoto(@Query("w") width : Float,@Query("h") height : Float) : PhotoDto
 
 }

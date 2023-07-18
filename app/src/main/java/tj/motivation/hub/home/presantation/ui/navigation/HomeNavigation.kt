@@ -5,6 +5,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import tj.motivation.hub.home.presantation.ui.screen.HomeScreen
+import tj.motivation.hub.home.presantation.ui.screen.ProfileScreen
 
 @Composable
 fun HomeNavigation()  {
@@ -14,6 +15,10 @@ fun HomeNavigation()  {
     NavHost(navController = navController, startDestination = NavigationTags.HOME){
         composable(NavigationTags.HOME){
             HomeScreen(navController)
+        }
+        
+        composable(NavigationTags.PROFILE){
+            ProfileScreen(navController = navController)
         }
     }
 

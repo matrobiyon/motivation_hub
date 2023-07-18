@@ -11,6 +11,6 @@ data class QuotesDto(
     @SerializedName("c") val count : String
 ) {
     fun toQuotes(photo: Photo) : Quotes {
-        return Quotes(author, quote,photo.urls.regular,photo.id)
+        return Quotes(author, quote,photo.urls.small_s3,photo.id)
     }
 }
