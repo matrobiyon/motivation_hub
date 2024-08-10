@@ -8,9 +8,17 @@ data class QuotesDto(
     @SerializedName("a") val author: String,
     @SerializedName("h") val html: String,
     @SerializedName("q") val quote: String,
-    @SerializedName("c") val count : String
+    @SerializedName("c") val count: String
 ) {
-    fun toQuotes(photo: Photo) : Quotes {
-        return Quotes(author, quote,photo.urls.small_s3,photo.id)
+    fun toQuotes(photo: Photo, yellowWordStart: Int? = null, yellowWordEnd: Int? = null): Quotes {
+        return Quotes(
+            author,
+            quote,
+            photo.urls.small_s3,
+            photo.urls.thumb,
+            photo.likes,
+            yellowWordStart = yellowWordStart,
+            yellowWordEnd = yellowWordEnd
+        )
     }
 }

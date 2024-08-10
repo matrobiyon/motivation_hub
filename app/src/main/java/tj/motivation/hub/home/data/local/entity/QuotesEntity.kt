@@ -8,11 +8,14 @@ import tj.motivation.hub.home.domain.model.quotes.Quotes
 data class QuotesEntity(
     val author: String,
     val quote: String,
-    val background: String,
-    val backgroundsId: String,
+    val image: String,
+    val imageThumb: String,
+    val likes: Int = 0,
+    val yellowWordStart : Int? = null,
+    val yellowWordEnd : Int? = null,
     @PrimaryKey(autoGenerate = true) val id: Int = 0
 ) {
     fun toQuotes(): Quotes {
-        return Quotes(author, quote, background, backgroundsId)
+        return Quotes(author, quote, image, imageThumb, likes)
     }
 }

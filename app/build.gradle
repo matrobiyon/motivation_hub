@@ -7,12 +7,12 @@ plugins {
 
 android {
     namespace 'tj.motivation.hub'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "tj.motivation.hub"
         minSdk 24
-        targetSdk 33
+        targetSdk 34
         versionCode 1
         versionName "1.0"
 
@@ -24,6 +24,7 @@ android {
         properties.load(project.rootProject.file("local.properties").newDataInputStream())
 
         buildConfigField "String","UNSPLASH_API_KEY","\"${properties.getProperty("UNSPLASH_API_KEY")}\""
+        buildConfigField "String","GEMINI_API_KEY","\"${properties.getProperty("GEMINI_API_KEY")}\""
 
     }
 
@@ -63,8 +64,8 @@ dependencies {
     implementation 'androidx.compose.ui:ui'
     implementation 'androidx.compose.ui:ui-graphics'
     implementation 'androidx.compose.ui:ui-tooling-preview'
-    implementation 'androidx.compose.material3:material3'
     implementation 'androidx.core:core-ktx:1.10.1'
+    implementation 'androidx.compose.material3:material3-android:1.2.1'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
@@ -107,6 +108,8 @@ dependencies {
     implementation "io.coil-kt:coil-compose:2.0.0-rc01"
 
     //For ViewPagers
-    implementation 'androidx.compose.foundation:foundation:1.4.3'
+    implementation 'androidx.compose.foundation:foundation:1.6.8'
 
+    //AI (Gemini) adding to project
+    implementation("com.google.ai.client.generativeai:generativeai:0.9.0")
 }

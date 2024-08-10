@@ -6,5 +6,4 @@ import tj.motivation.hub.home.domain.model.quotes.Quotes
 
 interface HomeRepository {
     fun getRandomQuoteAndPhoto(width : Float,height : Float) : Flow<Resource<List<Quotes>>>
-
 }

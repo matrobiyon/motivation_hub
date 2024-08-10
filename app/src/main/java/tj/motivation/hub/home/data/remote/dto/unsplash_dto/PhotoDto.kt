@@ -23,10 +23,11 @@ data class PhotoDto(
 ) {
     fun toPhoto() : Photo {
         return Photo(
-            id,
-            urls.toUrls(),
-            views,
-            width
+            id = id,
+            urls = urls.toUrls(),
+            views = views,
+            width = width,
+            likes = likes
         )
     }
 }

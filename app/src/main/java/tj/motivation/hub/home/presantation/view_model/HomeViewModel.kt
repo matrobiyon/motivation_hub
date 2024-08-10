@@ -36,7 +36,6 @@ class HomeViewModel @Inject constructor(
         job?.cancel()
         job = viewModelScope.launch(Dispatchers.IO) {
             getQuoteAndPhotoUseCase(width,height).onEach { result ->
-                Log.d("TAG", "getRandomQuoteAndPhoto: ${result.message} message ${result.data} data")
                 when (result) {
                     is Resource.Success -> {
                         _randomPhotoAndQuoteState.value = randomPhotoAndQuoteState.value.copy(

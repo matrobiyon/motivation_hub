@@ -1,6 +1,6 @@
 package tj.motivation.hub.home.presantation.ui.navigation
 
 object NavigationTags {
-    const val HOME = "home"
-    const val PROFILE = "profile"
+    const val HOME = "Home"
+    const val PROFILE = "Profile"
 }
