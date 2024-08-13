@@ -72,6 +72,7 @@ class MainActivity : ComponentActivity() {
                                                 contentDescription = item.title
                                             )
                                         },
+                                        enabled = index == 0
                                     )
                                 }
                             }

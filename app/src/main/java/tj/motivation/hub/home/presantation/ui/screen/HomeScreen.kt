@@ -22,6 +22,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.TileMode
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.SpanStyle
@@ -75,7 +76,7 @@ fun HomeScreen(
                 ) {
                     Image(
                         painter = rememberAsyncImagePainter(
-                            state.data[page].image
+                            model = state.data[page].image,
                         ),
                         contentDescription = "Author ${state.data[page].author}",
                         modifier = Modifier

@@ -2,14 +2,12 @@ package tj.motivation.hub.home.di
 
 import android.app.Application
 import androidx.room.Room
-import com.google.ai.client.generativeai.GenerativeModel
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import tj.motivation.hub.BuildConfig
 import tj.motivation.hub.home.HomeUtils
 import tj.motivation.hub.home.data.local.QuotesDB
 import tj.motivation.hub.home.data.remote.PhotoApi
@@ -22,14 +20,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 class HomeModule {
-
-    @Provides
-    @Singleton
-    fun provideGenerativeModel(): GenerativeModel = GenerativeModel(
-        modelName = "gemini-1.5-flash",
-        apiKey = BuildConfig.GEMINI_API_KEY,
-    )
-
 
     @Provides
     @Singleton
@@ -62,9 +52,8 @@ class HomeModule {
         db: QuotesDB,
         quotesApi: QuotesApi,
         photoApi: PhotoApi,
-        generativeModel: GenerativeModel
     ): HomeRepository {
-        return HomeRepositoryImpl(db.getQuotesDao(), quotesApi, photoApi,generativeModel)
+        return HomeRepositoryImpl(db.getQuotesDao(), quotesApi, photoApi)
     }
 
     @Provides
